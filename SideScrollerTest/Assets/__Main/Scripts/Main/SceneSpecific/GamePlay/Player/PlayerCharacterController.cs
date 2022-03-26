@@ -14,7 +14,6 @@ namespace GamePlay.Elements.Player
         Transform Transform { get; }
 
         void Init(Vector3 position);
-
     }
 
     [System.Serializable]
@@ -32,30 +31,30 @@ namespace GamePlay.Elements.Player
         [SerializeField] public Rigidbody2D Rigidbody;
         [SerializeField] public Transform LegsTransform;
 
-      
 
         public int SkyJumpLimit;
 
         public bool IsGrounded;
         public int JumpCounter;
         public float ShootTimer;
-
     }
 
     public class PlayerCharacterControllerController : BaseController<PlayerCharacterControllerModel>
     {
         public void Move(float input, Transform characterTransform)
         {
-            characterTransform.Translate(new Vector3(0, input, 0));
+            characterTransform.Translate(new Vector3(input * Model.HorizontalSpeed * Time.deltaTime, 0, 0));
         }
 
         public void Jump(Rigidbody2D rigidBody)
         {
+            Debug.Log(Model.JumpCounter);
             if (Model.JumpCounter > Model.SkyJumpLimit) return;
-            Model.Rigidbody.AddForce(Vector3.up,ForceMode2D.Impulse);
+            Model.JumpCounter++;
+            Model.Rigidbody.AddForce(Vector3.up * Model.JumpForce, ForceMode2D.Impulse);
         }
 
-        
+
         public void Shoot(Vector3 position, Vector3 direction)
         {
             if (Model.ShootTimer < Model.FireRate) return;
@@ -75,6 +74,9 @@ namespace GamePlay.Elements.Player
 
         public void DisplayLogGroundDetector()
         {
+            if (Model.IsGrounded)
+                Gizmos.color = Color.red;
+            else Gizmos.color = Color.blue;
             Gizmos.DrawCube(Model.LegsTransform.position + Vector3.down * Model.GroundDectectionDistance,
                 Model.GroundDetectionBoxSize);
         }
@@ -86,9 +88,8 @@ namespace GamePlay.Elements.Player
     {
         private Transform _cachedTransform;
         public Transform Transform => _cachedTransform;
-        
-        
-        
+
+
         public void Init(Vector3 position)
         {
             _cachedTransform.position = position;

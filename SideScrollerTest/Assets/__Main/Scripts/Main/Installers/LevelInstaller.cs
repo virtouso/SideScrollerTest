@@ -14,8 +14,8 @@ namespace GamePlay.Installers
             Container.Bind<IPlayerCharacterController>().To<PlayerCharacterController>()
                 .FromComponentInNewPrefab(_characterController)
                 .AsSingle();
-
-
+            
+            
             Container.Bind<ISinglePlayerMissionsManager>().To<SinglePlayerMissionsManager>()
                 .FromMethod(FindMissionsManager).AsSingle();
         }
