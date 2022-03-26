@@ -28,7 +28,7 @@ namespace GamePlay.Manager
 
     public class SinglePlayerMissionsManager : MonoBehaviour, ISinglePlayerMissionsManager
     {
-      //  [Inject] private IGamePlayUiManager _uiManager;
+       [Inject] private IGamePlayUiManager _uiManager;
 
 
         public Action<MissionBase> OnMissionFail { get; set; }
@@ -44,27 +44,27 @@ namespace GamePlay.Manager
 
         private void Start()
         {
-            // OnMissionFail += delegate(MissionBase mission) { _uiManager.ShowMissionFailMessage(mission.FailMessage); };
-            // OnMissionSuccess += delegate(MissionBase mission)
-            // {
-            //     _uiManager.ShowMissionSuccessMessage(mission.SuccessMessage);
-            // };
-            // OnMissionChunkStart += delegate(MissionsList.MissionChunk chunk)
-            // {
-            //     _uiManager.ShowMissionChunkMessage(chunk.ChunkMessage);
-            // };
-            // OnMissionChunkSuccess += delegate(MissionsList.MissionChunk chunk)
-            // {
-            //     _uiManager.ShowMissionChunkSuccessMessage(chunk.FinalSuccessMessage);
-            // };
-            // OnMissionChunkFail += delegate(MissionsList.MissionChunk chunk)
-            // {
-            //     _uiManager.ShowMissionChunkFailMessage(chunk.FinalFailureMessage);
-            // };
-            //
-            // OnLevelStart += delegate(string s) { _uiManager.ShowLevelStartMessage(s); };
-            // OnLevelSuccess += delegate(string s) { _uiManager.ShowLevelSuccessMessage(s); };
-            // OnLevelFail += delegate(string s) { _uiManager.ShowLevelFailMessage(s); };
+            OnMissionFail += delegate(MissionBase mission) { _uiManager.ShowMissionFailMessage(mission.FailMessage); };
+            OnMissionSuccess += delegate(MissionBase mission)
+            {
+                _uiManager.ShowMissionSuccessMessage(mission.SuccessMessage);
+            };
+            OnMissionChunkStart += delegate(MissionsList.MissionChunk chunk)
+            {
+                _uiManager.ShowMissionChunkMessage(chunk.ChunkMessage);
+            };
+            OnMissionChunkSuccess += delegate(MissionsList.MissionChunk chunk)
+            {
+                _uiManager.ShowMissionChunkSuccessMessage(chunk.FinalSuccessMessage);
+            };
+            OnMissionChunkFail += delegate(MissionsList.MissionChunk chunk)
+            {
+                _uiManager.ShowMissionChunkFailMessage(chunk.FinalFailureMessage);
+            };
+            
+            OnLevelStart += delegate(string s) { _uiManager.ShowLevelStartMessage(s); };
+            OnLevelSuccess += delegate(string s) { _uiManager.ShowLevelSuccessMessage(s); };
+            OnLevelFail += delegate(string s) { _uiManager.ShowLevelFailMessage(s); };
         }
     }
 }

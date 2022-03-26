@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utility;
 using Zenject;
 
 namespace MainMenu.Installers
@@ -8,6 +9,9 @@ namespace MainMenu.Installers
     {
         public override void InstallBindings()
         {
+            Container.Bind<IUtilitySceneLoader>().To<UtilitySceneLoader>().FromNew().AsSingle();
+
+
         }
     }
 }

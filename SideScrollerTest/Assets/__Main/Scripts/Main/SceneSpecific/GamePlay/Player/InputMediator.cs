@@ -1,18 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputMediator : MonoBehaviour
+namespace GamePlay.Elements.Player
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public interface IInputMediator
     {
-        
+        Action<float> HorizontalMove { get; set; }
+        Action Jump { get; set; }
+        Action Shoot { get; set; }
+    }
+    public class InputMediator :IInputMediator
+    {
+        public Action<float> HorizontalMove { get; set; }
+        public Action Jump { get; set; }
+        public Action Shoot { get; set; }
     }
 }
