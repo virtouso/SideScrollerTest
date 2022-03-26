@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6003371352594075006}
   - component: {fileID: 8248767306040779439}
   - component: {fileID: -5994281517118460659}
+  - component: {fileID: 3052037752929522272}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -172,6 +173,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a49a85d1475567479d47d5b4119ae14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3052037752929522272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612646401804140775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36128cd1e33a0048b377395f350baa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _missionType: 0
+  _missionPriority: 0
+  missionGroupId: 0
+  requirementGroupId: 0
+  _loseIsFata: 0
+  _successIsFinal: 0
+  _successIsAggregator: 0
+  _failIsAggregator: 0
+  _missionTimer:
+    TimeLimited: 0
+    Time: 0
+  _successMessage: 
+  _failMessage: 
+  _desciption: 
 --- !u!1 &3714871476471794293
 GameObject:
   m_ObjectHideFlags: 0

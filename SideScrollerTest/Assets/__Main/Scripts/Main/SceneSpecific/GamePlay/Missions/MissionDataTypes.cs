@@ -7,14 +7,8 @@ namespace Manager.SinglePlayer.Missions
     public enum MissionTypes
     {
         KillSomeOne,
-        RescueHostage,
-        DefuseBomb,
-        ReachPlace,
-        DestroyPlace,
-        FindInformation,
-        GetExtracted,
-        ProtectPlace,
-        ProtectPerson
+        FindKey,
+        OpenDoor
     }
 
     [System.Flags]
