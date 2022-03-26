@@ -172,6 +172,8 @@ GameObject:
   m_Component:
   - component: {fileID: 639625262}
   - component: {fileID: 639625263}
+  - component: {fileID: 639625265}
+  - component: {fileID: 639625264}
   m_Layer: 11
   m_Name: Door
   m_TagString: Untagged
@@ -246,6 +248,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &639625264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639625261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68321e6fcf677834fb7294d1fc938f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _missionType: 2
+  _missionPriority: 0
+  missionGroupId: 0
+  requirementGroupId: 0
+  _loseIsFata: 0
+  _successIsFinal: 1
+  _successIsAggregator: 0
+  _failIsAggregator: 0
+  _missionTimer:
+    TimeLimited: 0
+    Time: 0
+  _successMessage: 
+  _failMessage: 
+  _desciption: 
+  _door: {fileID: 639625265}
+--- !u!114 &639625265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639625261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8679837536cab3428371a13dc37c50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &919283409
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,6 +613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3052037752929522272, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
+      propertyPath: _successIsAggregator
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
 --- !u!1 &1300147279 stripped
@@ -588,12 +633,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1300147279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae49206d36b59354b98f680504160bc4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1155dbbab9e08d5448b6c8af95ac1c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
-  _collider: {fileID: 0}
-  _rigidBody: {fileID: 0}
+--- !u!114 &1300147281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300147279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36128cd1e33a0048b377395f350baa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _missionType: 0
+  _missionPriority: 0
+  missionGroupId: 0
+  requirementGroupId: 0
+  _loseIsFata: 0
+  _successIsFinal: 0
+  _successIsAggregator: 0
+  _failIsAggregator: 0
+  _missionTimer:
+    TimeLimited: 0
+    Time: 0
+  _successMessage: 
+  _failMessage: 
+  _desciption: 
 --- !u!1 &1314209221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,16 +1165,16 @@ MonoBehaviour:
   missionGroupId: 0
   requirementGroupId: 0
   _loseIsFata: 0
-  _successIsFinal: 0
+  _successIsFinal: 1
   _successIsAggregator: 0
   _failIsAggregator: 0
   _missionTimer:
     TimeLimited: 0
     Time: 0
-  _successMessage: 
-  _failMessage: 
-  _desciption: 
-  _key: {fileID: 0}
+  _successMessage: You Got The Key
+  _failMessage: Failed To Get The Key
+  _desciption: Find The Key
+  _key: {fileID: 1573790509}
 --- !u!114 &1573790509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1552,6 +1620,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3052037752929522272, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
+      propertyPath: _successIsAggregator
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
 --- !u!1 &2123118519 stripped
@@ -1568,12 +1640,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2123118519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae49206d36b59354b98f680504160bc4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1155dbbab9e08d5448b6c8af95ac1c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
-  _collider: {fileID: 0}
-  _rigidBody: {fileID: 0}
 --- !u!1001 &1694558203189179902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1629,6 +1698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3052037752929522272, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
+      propertyPath: _successIsAggregator
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
 --- !u!1 &2235132442415838489 stripped
@@ -1645,9 +1718,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 2235132442415838489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae49206d36b59354b98f680504160bc4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1155dbbab9e08d5448b6c8af95ac1c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
-  _collider: {fileID: 0}
-  _rigidBody: {fileID: 0}
+--- !u!114 &8254204862614064129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235132442415838489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36128cd1e33a0048b377395f350baa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _missionType: 0
+  _missionPriority: 0
+  missionGroupId: 0
+  requirementGroupId: 0
+  _loseIsFata: 0
+  _successIsFinal: 0
+  _successIsAggregator: 0
+  _failIsAggregator: 0
+  _missionTimer:
+    TimeLimited: 0
+    Time: 0
+  _successMessage: 
+  _failMessage: 
+  _desciption: 
