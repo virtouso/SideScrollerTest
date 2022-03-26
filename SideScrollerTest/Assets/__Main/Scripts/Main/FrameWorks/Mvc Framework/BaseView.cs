@@ -14,6 +14,7 @@ namespace Mvc
         {
           Controller = new M();
           Controller.Setup(Model);
+          
         }
     }
 }

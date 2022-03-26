@@ -1,18 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class MainMenuMainPanel : MonoBehaviour
+using Mvc;
+using UnityEngine;
+using UnityEngine.UI;
+using Utility;
+using Zenject;
+
+namespace MainMenu.Panels
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MainMenuMainPanelModel : BaseModel
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public class MainMenuMainPanelController : BaseController<MainMenuMainPanelModel>
     {
-        
+        public void PlayGame(IUtilitySceneLoader sceneLoader)
+        {
+            sceneLoader.LoadScene(SceneNames.GamePlay, SceneNames.Level1);
+        }
+
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
+    }
+
+
+    public class MainMenuMainPanel : BaseView<MainMenuMainPanelModel, MainMenuMainPanelController>
+    {
+        [Inject] private IUtilitySceneLoader _utilitySceneLoader;
+
+        [SerializeField] private Button _playButton;
+        [SerializeField] private Button _exitButton;
+
+
+        private void Start()
+        {
+            _playButton.onClick.AddListener(delegate { Controller.PlayGame(_utilitySceneLoader); });
+            _exitButton.onClick.AddListener(Controller.ExitGame);
+        }
     }
 }
