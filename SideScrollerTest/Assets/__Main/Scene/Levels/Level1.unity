@@ -998,6 +998,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 3040432830816201609, guid: 61c1c64c80d62ba48b7104bce32eca62, type: 3}
+  _poolSize: 20
+  _bulletPrefab: {fileID: -7374787178959363262, guid: 7fa69ecf5443f9e4eaef8f2c5b7020b2, type: 3}
 --- !u!114 &1403129472
 MonoBehaviour:
   m_ObjectHideFlags: 0
