@@ -11,11 +11,14 @@ namespace GamePlay.Elements.Player
         Action<float> HorizontalMove { get; set; }
         Action Jump { get; set; }
         Action Shoot { get; set; }
+        Action Escape { get; set; }
+        
     }
     public class InputMediator :IInputMediator
     {
         public Action<float> HorizontalMove { get; set; }
         public Action Jump { get; set; }
         public Action Shoot { get; set; }
+        public Action Escape { get; set; }
     }
 }

@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputValidator : MonoBehaviour
+namespace GamePlay.Elements
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public interface IInputValidator
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public class InputValidator :IInputValidator
     {
-        
+
     }
 }

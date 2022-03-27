@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GamePlay.Manager;
 using Mvc;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,7 +43,7 @@ namespace GamePlay.Elements.Player
     public class PlayerCharacterControllerController : BaseController<PlayerCharacterControllerModel>
     {
         [Inject] private IBullet.Pool _bulletPool;
-
+        [Inject] private ISinglePlayerMissionsManager _missionsManager;
         public void Move(float input, Transform characterTransform)
         {
             characterTransform.position+=(new Vector3(input * Model.HorizontalSpeed * Time.deltaTime, 0, 0));
@@ -71,6 +72,11 @@ namespace GamePlay.Elements.Player
         }
 
 
+        public void Escape()
+        {
+            _missionsManager.PlayerPaused();
+        }
+
         public bool CheckGrounded()
         {
             var result =
@@ -81,6 +87,9 @@ namespace GamePlay.Elements.Player
             return result;
         }
 
+        
+        
+        
         public void DisplayLogGroundDetector()
         {
             if (Model.IsGrounded)
@@ -107,7 +116,10 @@ namespace GamePlay.Elements.Player
         [Inject] private BaseInputReader InputReader;
         [Inject] private IInputMediator InputMediator;
         [Inject] private IActorGroup _actorGroup;
-
+        [Inject] private IDamageable _damageable;
+        [Inject] private IGamePlayUiManager _uiManager;
+        [Inject] private ISinglePlayerMissionsManager _missionsManager; 
+        
         private void Awake()
         {
             _cachedTransform = transform;
@@ -120,10 +132,12 @@ namespace GamePlay.Elements.Player
 
             this.InputMediator.Jump += delegate { Controller.Jump(Model.Rigidbody); };
             this.InputMediator.HorizontalMove += delegate(float f) { Controller.Move(f, _cachedTransform); };
-            this.InputMediator.Shoot += delegate
-            {
-                Controller.Shoot(Model.ShootMuzzle.position, Model.ShootMuzzle.right, _actorGroup);
-            };
+            this.InputMediator.Shoot += delegate { Controller.Shoot(Model.ShootMuzzle.position, Model.ShootMuzzle.right, _actorGroup); };
+            this.InputMediator.Escape+= delegate { Controller.Escape(); };
+            
+            _uiManager.SetMaximumHealth(_damageable.CurrentHealth.Data);
+            _damageable.CurrentHealth.Action += _uiManager.SetHealth;
+            _damageable.OnDeath += _missionsManager.PlayerFailed;
         }
 
         public void Update()

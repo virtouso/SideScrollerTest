@@ -20,9 +20,26 @@ namespace GamePlay.Missions
             
             gameObject.SetActive(false);
         }
+
+        private void Awake()
+        {
+       
+        }
+
         private void Start()
         {
-            _door.DoorOpened += OnDone;
+          //  _door.DoorOpened += OnDone;
+
+        
+          _door.DoorOpened += RunOnDone;
         }
+
+
+        private void RunOnDone()
+        {
+            OnDone?.Invoke();
+        }
+        
+        
     }
 }

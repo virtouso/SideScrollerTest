@@ -18,6 +18,7 @@ namespace Utility
             SceneManager.LoadScene(sceneName);
             if (additive is null) return;
             SceneManager.LoadScene(additive, LoadSceneMode.Additive);
+            GeneralReferences.SelectedLevel = additive;
         }
     }
 }

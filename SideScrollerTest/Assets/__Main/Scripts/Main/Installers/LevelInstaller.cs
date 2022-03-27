@@ -30,11 +30,21 @@ namespace GamePlay.Installers
 
             Container.Bind<IEnvironmentInteractionConfiguration>().To<EnvironmentInteractionConfiguration>()
                 .FromScriptableObject(_environmentConfig).AsSingle();
+            
+             Container.Bind<IGamePlayUiManager>().To<GamePlayUiManager>().FromMethod(FindUiManager).AsSingle();
+            
         }
 
         private SinglePlayerMissionsManager FindMissionsManager()
         {
             return GameObject.FindObjectOfType<SinglePlayerMissionsManager>();
         }
+        
+        
+        private GamePlayUiManager FindUiManager()
+        {
+            return GameObject.FindObjectOfType<GamePlayUiManager>();
+        }
+        
     }
 }

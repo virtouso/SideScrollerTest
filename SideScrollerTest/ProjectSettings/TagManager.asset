@@ -19,8 +19,8 @@ TagManager:
   - Damageable
   - Key
   - Door
-  - 
-  - 
+  - Obstacle
+  - Player
   - 
   - 
   - 

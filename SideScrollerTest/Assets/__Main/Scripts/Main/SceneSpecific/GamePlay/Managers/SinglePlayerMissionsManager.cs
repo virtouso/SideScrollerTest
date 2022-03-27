@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using GamePlay.Missions;
 using Manager.SinglePlayer.Missions;
 using SinglePlayer.OnFoot.Missions;
 using UnityEngine;
+using Utility;
 using Zenject;
 
 namespace GamePlay.Manager
@@ -24,13 +26,18 @@ namespace GamePlay.Manager
         public Action<string> OnLevelStart { get; set; }
         public Action<string> OnLevelSuccess { get; set; }
         public Action<string> OnLevelFail { get; set; }
+
+
+        void PlayerFailed();
+
+        void PlayerPaused();
     }
 
 
     public class SinglePlayerMissionsManager : MonoBehaviour, ISinglePlayerMissionsManager
     {
-       [Inject] private IGamePlayUiManager _uiManager;
-
+        [Inject] private IGamePlayUiManager _uiManager;
+        [Inject] private IUtilitySceneLoader _sceneLoader;
 
         public Action<MissionBase> OnMissionFail { get; set; }
         public Action<MissionBase> OnMissionSuccess { get; set; }
@@ -41,6 +48,27 @@ namespace GamePlay.Manager
         public Action<string> OnLevelStart { get; set; }
         public Action<string> OnLevelSuccess { get; set; }
         public Action<string> OnLevelFail { get; set; }
+
+        private bool _playerHasFailed;
+
+        public void PlayerFailed()
+        {
+            _playerHasFailed = true;
+            _uiManager.ShowLevelFailMessage(true, "Fail",
+                () => { _sceneLoader.LoadScene(SceneNames.GamePlay, GeneralReferences.SelectedLevel); },
+                () => { _sceneLoader.LoadScene(SceneNames.MainMenu); });
+        }
+
+        public void PlayerPaused()
+        {
+            if (_playerHasFailed) return;
+
+            GeneralReferences.Paused = !GeneralReferences.Paused;
+
+            _uiManager.ShowLevelFailMessage(GeneralReferences.Paused, "Paused",
+                () => { GeneralReferences.Paused = !GeneralReferences.Paused; },
+                () => { _sceneLoader.LoadScene(SceneNames.MainMenu); });
+        }
 
 
         private void Start()
@@ -62,18 +90,14 @@ namespace GamePlay.Manager
             {
                 _uiManager.ShowMissionChunkFailMessage(chunk.FinalFailureMessage);
             };
-            
+
             OnLevelStart += delegate(string s) { _uiManager.ShowLevelStartMessage(s); };
-            OnLevelSuccess += delegate(string s) { _uiManager.ShowLevelSuccessMessage(s); };
-            OnLevelFail += delegate(string s) { _uiManager.ShowLevelFailMessage(s); };
-            
- 
+            OnLevelSuccess += delegate(string s)
+            {
+                _uiManager.ShowLevelSuccessMessage(s);
+                _sceneLoader.LoadScene(SceneNames.MainMenu);
+            };
+            OnLevelFail += delegate(string s) { PlayerFailed(); };
         }
-
-
- 
-        
-        
-        
     }
 }
