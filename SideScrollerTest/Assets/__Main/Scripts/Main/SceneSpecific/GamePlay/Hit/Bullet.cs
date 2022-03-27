@@ -25,6 +25,8 @@ public class Bullet : MonoBehaviour, IBullet
 
     public void Shoot(Vector3 startPosition, Vector3 direction, float angleRotation, IActorGroup ownerActor)
     {
+        _actor = ownerActor;
+        gameObject.SetActive(true);
         transform.position = startPosition;
         _rigidBody.AddForce(_shootForce * direction, ForceMode2D.Impulse);
     }
@@ -33,7 +35,8 @@ public class Bullet : MonoBehaviour, IBullet
     {
         //todo fix it
         var component = other.GetComponent<Damageable>();
-        if (component != null) ;
-        component.ApplyDamage(_damage, _damagerType, _actor);
+        if (component != null)
+            component.ApplyDamage(_damage, _damagerType, _actor);
+        gameObject.SetActive(false);
     }
 }

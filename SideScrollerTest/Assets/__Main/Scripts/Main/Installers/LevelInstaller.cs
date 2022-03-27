@@ -11,6 +11,7 @@ namespace GamePlay.Installers
         [SerializeField] private PlayerCharacterController _characterController;
         [SerializeField] private int _poolSize;
         [SerializeField] private Bullet _bulletPrefab;
+        [SerializeField] private EnvironmentInteractionConfiguration _environmentConfig;
 
         public override void InstallBindings()
         {
@@ -24,6 +25,11 @@ namespace GamePlay.Installers
 
             Container.BindMemoryPool<IBullet, IBullet.Pool>().WithInitialSize(_poolSize)
                 .FromComponentInNewPrefab(_bulletPrefab).AsTransient();
+            Container.Bind<IEnvironmentInteractionManager>().To<EnvironmentInteractionManager>()
+                .FromComponentInHierarchy().AsSingle();
+
+            Container.Bind<IEnvironmentInteractionConfiguration>().To<EnvironmentInteractionConfiguration>()
+                .FromScriptableObject(_environmentConfig).AsSingle();
         }
 
         private SinglePlayerMissionsManager FindMissionsManager()

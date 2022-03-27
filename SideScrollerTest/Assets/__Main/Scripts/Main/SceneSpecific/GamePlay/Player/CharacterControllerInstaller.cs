@@ -11,7 +11,8 @@ public class CharacterControllerInstaller : MonoInstaller
  
         Container.Bind<IInputMediator>().To<InputMediator>().FromNew().AsSingle();
         Container.Bind<BaseInputReader>().To<WindowsInputReader>().FromNewComponentSibling().AsSingle();
-
+        Container.Bind<IActorGroup>().To<CampaignPlayerGroup>().FromComponentSibling().AsSingle();
+        Container.Bind<IDamageable>().To<Damageable>().FromComponentSibling().AsSingle();
     }
 
     private PlayerCharacterControllerModel GetModel()

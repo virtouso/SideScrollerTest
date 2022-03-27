@@ -13,6 +13,11 @@ namespace GamePlay.Missions
     {
         [SerializeField] private Key _key;
 
+        public override void OnChunkFinish()
+        {
+            base.OnChunkFinish();
+            gameObject.SetActive(false);
+        }
 
         private void Start()
         {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GamePlay.Missions;
 using Manager.SinglePlayer.Missions;
 using SinglePlayer.OnFoot.Missions;
@@ -65,6 +66,14 @@ namespace GamePlay.Manager
             OnLevelStart += delegate(string s) { _uiManager.ShowLevelStartMessage(s); };
             OnLevelSuccess += delegate(string s) { _uiManager.ShowLevelSuccessMessage(s); };
             OnLevelFail += delegate(string s) { _uiManager.ShowLevelFailMessage(s); };
+            
+ 
         }
+
+
+ 
+        
+        
+        
     }
 }

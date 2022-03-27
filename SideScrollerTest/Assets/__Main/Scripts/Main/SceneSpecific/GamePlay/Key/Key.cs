@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GamePlay.Elements
 {
@@ -9,16 +10,19 @@ namespace GamePlay.Elements
     {
         Action KeyGained { get; set; }
 
-        void InteractKey();
+      
     }
 
     public class Key : MonoBehaviour, IKey
     {
         public Action KeyGained { get; set; }
 
-        public void InteractKey()
+     
+
+
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            KeyGained?.Invoke();
+            KeyGained.Invoke();
         }
     }
 }

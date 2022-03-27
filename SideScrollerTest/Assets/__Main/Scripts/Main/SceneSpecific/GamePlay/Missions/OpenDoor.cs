@@ -14,7 +14,12 @@ namespace GamePlay.Missions
     public class OpenDoor : MissionBase, IOpenDoor
     {
         [SerializeField] private Door _door;
-
+        public override void OnChunkFinish()
+        {
+            base.OnChunkFinish();
+            
+            gameObject.SetActive(false);
+        }
         private void Start()
         {
             _door.DoorOpened += OnDone;
