@@ -9,10 +9,10 @@
 
 ## Important Features
 
-* used MVC to seperate logic from monobehaviours. its makes logix easier to test without play mode testing. 
+* used MVC to seperate logic from monobehaviours. its makes logic easier to test without play mode testing. 
 (because of lack of time i could not apply MVC on all classes.)
 
-* used MVVM  to bind UI to some live changing number like plater health to health bar. so healthbar automaticallly updates.
+* used MVVM  to bind UI to some live changing number like player health to health bar. so healthbar automaticallly updates.
 
 * used an automated level missions system. in level there are chunk of missions that new chunk run after a mission chunk ends.
 it helps faster level scenario definitions. some classes derive from "BaseMission". these classes read other components to read mission is done.
