@@ -10,16 +10,7 @@ namespace MainMenu.Installers
     {
         public override void InstallBindings()
         {
-            // Container.Bind<BaseController<FollowCameraModel>>().To<FollowCameraController>().FromNew()
-            //     .AsSingle();
-            //
-            // Container.Bind<BaseModel>().To<FollowCameraModel>().FromNew().AsSingle();
-            //
-            // Container.Bind<BaseView<FollowCameraModel, FollowCameraController>>().To<FollowCamera>()
-            //     .FromComponentSibling().AsSingle();
 
-            
-            
             Container.Bind<FollowCameraController>().FromNew()
                 .AsSingle();
 

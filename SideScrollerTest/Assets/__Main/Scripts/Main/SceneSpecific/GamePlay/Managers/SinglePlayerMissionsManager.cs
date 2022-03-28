@@ -55,8 +55,17 @@ namespace GamePlay.Manager
         {
             _playerHasFailed = true;
             _uiManager.ShowLevelFailMessage(true, "Fail",
-                () => { _sceneLoader.LoadScene(SceneNames.GamePlay, GeneralReferences.SelectedLevel); },
-                () => { _sceneLoader.LoadScene(SceneNames.MainMenu); });
+                () =>
+                {
+                    _sceneLoader.LoadScene(SceneNames.GamePlay, GeneralReferences.SelectedLevel);
+                    GeneralReferences.Paused = false;
+                },
+                () =>
+                {
+                    _sceneLoader.LoadScene(SceneNames.MainMenu);
+                    GeneralReferences.Paused = false;
+
+                });
         }
 
         public void PlayerPaused()
@@ -64,9 +73,9 @@ namespace GamePlay.Manager
             if (_playerHasFailed) return;
 
             GeneralReferences.Paused = !GeneralReferences.Paused;
-
-            _uiManager.ShowLevelFailMessage(GeneralReferences.Paused, "Paused",
-                () => { GeneralReferences.Paused = !GeneralReferences.Paused; },
+            string message = GeneralReferences.Paused ? "Paused" : "";
+            _uiManager.ShowLevelFailMessage(GeneralReferences.Paused, message,
+                () => {  PlayerPaused(); },
                 () => { _sceneLoader.LoadScene(SceneNames.MainMenu); });
         }
 

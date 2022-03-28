@@ -82,12 +82,12 @@ namespace GamePlay.Missions
                 _missionChunks[_currentMissionChunk].OnFinalFail.Event?.Invoke();
             };
 
-            //    return Task.FromResult<object>(null);
+      
         }
 
         private void Start()
         {
-            //  _missionsManager.OnLevelStart += delegate(string s) { StartCoroutine(StartLevel()); };
+
 
 
             foreach (var item in _missionChunks)
@@ -98,18 +98,14 @@ namespace GamePlay.Missions
                 item.OnFinalSuccess.Action += delegate { Debug.Log(item.ChunkMessage + " Chunks Success"); };
             }
 
-            //   _missionsManager.OnLevelStart.Invoke(_levelDescriptionMessage);
+
             StartCoroutine(StartLevel());
         }
 
         [System.Serializable]
         public class MissionChunk
         {
-            // public Action OnFinalSuccess;
-            // public UnityEvent OnFinalSuccessEvent;
-
-            // public Action OnFinalFail;
-            // public UnityEvent OnFinalFailEvent;
+          
 
             public ActionUnityEventPair OnFinalSuccess;
             public ActionUnityEventPair OnFinalFail;
@@ -150,7 +146,7 @@ namespace GamePlay.Missions
                         item.OnDone += delegate {  OnFinalSuccess.Action.Invoke();} ;
                         item.OnDone += item.OnChunkFinish;
                         item.OnDone += OnFinalSuccess.Event.Invoke;
-                        item.OnDone += delegate { Debug.Log(item.Description + "Importan Mission Done"); };
+                        item.OnDone += delegate { Debug.Log(item.Description + "Important Mission Done"); };
                     }
 
                     if (item.LoseIsFatal)

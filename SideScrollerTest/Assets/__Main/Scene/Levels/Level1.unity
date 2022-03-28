@@ -932,6 +932,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3121272055294320185, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.26
+      objectReference: {fileID: 0}
     - target: {fileID: 7280231672119393793, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
       propertyPath: _monoInstallers.Array.size
       value: 1
@@ -962,7 +966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialHealth: 30
   _fireRate: 0.5
-  _speed: 0.1
+  _speed: 4
   _wallDetectionMask:
     serializedVersion: 2
     m_Bits: 128
@@ -972,9 +976,9 @@ MonoBehaviour:
   _paddleDetectionMask:
     serializedVersion: 2
     m_Bits: 4096
-  _boxDetectionSize: {x: 0.1, y: 2}
-  _obstacleDetectionDistance: 1
-  _enemyDetectionDistance: 4
+  _boxDetectionSize: {x: 0.1, y: 4}
+  _obstacleDetectionDistance: 3
+  _enemyDetectionDistance: 7
   _shootMuzzle: {fileID: 1300147282}
 --- !u!114 &1300147281
 MonoBehaviour:
@@ -1004,7 +1008,7 @@ MonoBehaviour:
   _desciption: 
 --- !u!4 &1300147282 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7159594774809754239, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3121272055294320185, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
   m_PrefabInstance: {fileID: 1300147278}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1300147290
@@ -1072,7 +1076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1333277590}
   - component: {fileID: 1333277589}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Paddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2238,6 +2242,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3121272055294320185, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.24
+      objectReference: {fileID: 0}
     - target: {fileID: 7280231672119393793, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
       propertyPath: _monoInstallers.Array.size
       value: 1
@@ -2267,7 +2275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialHealth: 30
   _fireRate: 0.5
-  _speed: 0.1
+  _speed: 4
   _wallDetectionMask:
     serializedVersion: 2
     m_Bits: 128
@@ -2277,13 +2285,13 @@ MonoBehaviour:
   _paddleDetectionMask:
     serializedVersion: 2
     m_Bits: 4096
-  _boxDetectionSize: {x: 0.1, y: 2}
-  _obstacleDetectionDistance: 1
-  _enemyDetectionDistance: 4
+  _boxDetectionSize: {x: 0.1, y: 4}
+  _obstacleDetectionDistance: 3
+  _enemyDetectionDistance: 7
   _shootMuzzle: {fileID: 2123118521}
 --- !u!4 &2123118521 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7159594774809754239, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3121272055294320185, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
   m_PrefabInstance: {fileID: 2123118518}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2123118529
@@ -2395,6 +2403,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3121272055294320185, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.19
+      objectReference: {fileID: 0}
     - target: {fileID: 7280231672119393793, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
       propertyPath: _monoInstallers.Array.size
       value: 1
@@ -2408,7 +2420,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
 --- !u!4 &1694558203189179903 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7159594774809754239, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3121272055294320185, guid: 09f6899778a04824aa96270aa1f5da2d, type: 3}
   m_PrefabInstance: {fileID: 1694558203189179902}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2235132442415838489 stripped
@@ -2430,7 +2442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialHealth: 30
   _fireRate: 0.5
-  _speed: 0.1
+  _speed: 4
   _wallDetectionMask:
     serializedVersion: 2
     m_Bits: 128
@@ -2440,9 +2452,9 @@ MonoBehaviour:
   _paddleDetectionMask:
     serializedVersion: 2
     m_Bits: 4096
-  _boxDetectionSize: {x: 0.1, y: 2}
-  _obstacleDetectionDistance: 1
-  _enemyDetectionDistance: 4
+  _boxDetectionSize: {x: 0.1, y: 4}
+  _obstacleDetectionDistance: 3
+  _enemyDetectionDistance: 7
   _shootMuzzle: {fileID: 1694558203189179903}
 --- !u!114 &8254204862614064129
 MonoBehaviour:

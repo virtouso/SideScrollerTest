@@ -14,7 +14,8 @@ namespace GamePlay.Elements.Player
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            _damageable.OnDeath.Invoke();
+          
+            _damageable.OnDeath?.Invoke();
         }
     }
 }

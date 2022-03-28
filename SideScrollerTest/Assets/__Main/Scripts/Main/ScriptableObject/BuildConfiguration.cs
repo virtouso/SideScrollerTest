@@ -1,18 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Extensions;
 using UnityEngine;
 
-public class BuildConfiguration : MonoBehaviour
+
+namespace General.Configurations
 {
-    // Start is called before the first frame update
-    void Start()
+    public interface IBuildConfiguration
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public class BuildConfiguration : ScriptableObject, IBuildConfiguration
     {
+
+        public BuildController SelectedController;
         
+
+
+
+      
+        
+    }
+
+   
+
+    public enum BuildController
+    {
+        Keyboard,
+        Joystick
     }
 }

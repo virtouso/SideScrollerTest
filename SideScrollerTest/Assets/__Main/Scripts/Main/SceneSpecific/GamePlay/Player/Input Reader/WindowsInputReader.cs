@@ -5,27 +5,36 @@ using GamePlay.Elements.Player;
 using UnityEngine;
 using Zenject;
 
-public class WindowsInputReader : BaseInputReader
+
+namespace GamePlay.Elements.Player
 {
-    [Inject] private IInputMediator _mediator;
-    [Inject] private IInputValidator _inputValidator;
 
-    void Update()
+
+    public class WindowsInputReader : BaseInputReader
     {
-        if (GeneralReferences.Paused) return;
+        [Inject] private IInputMediator _mediator;
+        [Inject] private IInputValidator _inputValidator;
+
+        void Update()
+        {
+            
+            if (Input.GetKeyDown(KeyCode.Escape))
+                _mediator.Escape.Invoke();
+            
+            if (GeneralReferences.Paused) return;
 
 
-        float horizontalInput = Input.GetAxis("Horizontal");
-        _mediator.HorizontalMove.Invoke(horizontalInput);
+            float horizontalInput = Input.GetAxis("Horizontal");
+            _mediator.HorizontalMove.Invoke(horizontalInput);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            _mediator.Jump.Invoke();
+            if (Input.GetKeyDown(KeyCode.Space))
+                _mediator.Jump.Invoke();
 
-        if (Input.GetKey(KeyCode.RightShift))
-            _mediator.Shoot.Invoke();
+            if (Input.GetKey(KeyCode.RightShift))
+                _mediator.Shoot.Invoke();
 
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            _mediator.Escape.Invoke();
+        
+        }
     }
 }

@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour, IBullet
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //todo fix it
+        //todo better get fixed.. better replaced with dictionary search. in small scene dictionary is faster. 
         var component = other.GetComponent<Damageable>();
         if (component != null)
             component.ApplyDamage(_damage, _damagerType, _actor);

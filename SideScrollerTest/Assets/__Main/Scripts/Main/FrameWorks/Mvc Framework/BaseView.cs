@@ -21,8 +21,7 @@ namespace Mvc
         
         protected virtual void Awake()
         {
-            //  Controller = new M();
-            // Controller.Setup(Model);
+         
         }
     }
 }

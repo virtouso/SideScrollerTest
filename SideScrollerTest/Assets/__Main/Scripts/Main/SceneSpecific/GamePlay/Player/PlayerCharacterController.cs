@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GamePlay.Manager;
 using Mvc;
+using MVVM;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -31,7 +32,7 @@ namespace GamePlay.Elements.Player
 
         [SerializeField] public Rigidbody2D Rigidbody;
         [SerializeField] public Transform LegsTransform;
-
+        [SerializeField] public int InitialHealth;
 
         public int SkyJumpLimit;
 
@@ -134,10 +135,11 @@ namespace GamePlay.Elements.Player
             this.InputMediator.HorizontalMove += delegate(float f) { Controller.Move(f, _cachedTransform); };
             this.InputMediator.Shoot += delegate { Controller.Shoot(Model.ShootMuzzle.position, Model.ShootMuzzle.right, _actorGroup); };
             this.InputMediator.Escape+= delegate { Controller.Escape(); };
-            
+            _damageable.CurrentHealth = new Model<int>(Model.InitialHealth);
             _uiManager.SetMaximumHealth(_damageable.CurrentHealth.Data);
             _damageable.CurrentHealth.Action += _uiManager.SetHealth;
             _damageable.OnDeath += _missionsManager.PlayerFailed;
+            
         }
 
         public void Update()

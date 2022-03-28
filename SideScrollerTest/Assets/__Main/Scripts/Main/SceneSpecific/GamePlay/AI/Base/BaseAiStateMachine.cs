@@ -17,6 +17,7 @@ public class BaseAiStateMachine : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (GeneralReferences.Paused) return;
         CurrentState?.Invoke();
     }
 }

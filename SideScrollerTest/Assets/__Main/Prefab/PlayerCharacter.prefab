@@ -221,6 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3849606601042410689}
   - component: {fileID: 4906104374976881752}
+  - component: {fileID: 2706740258512823002}
   m_Layer: 12
   m_Name: ObstacleDetector
   m_TagString: Untagged
@@ -259,6 +260,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &2706740258512823002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830782858417786794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70ab14b2a51f4943976575fb3fa2c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6096466049722697261
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +394,7 @@ MonoBehaviour:
     ShootMuzzle: {fileID: 8595838281871890675}
     Rigidbody: {fileID: 2814886852649728806}
     LegsTransform: {fileID: 4229863307621817390}
+    InitialHealth: 200
     SkyJumpLimit: 0
     IsGrounded: 0
     JumpCounter: 0
@@ -436,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57bb1f2b9a5ee894592dafaf275542cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _buildConfig: {fileID: 11400000, guid: 6b808af08f4de7e459785b9a31ed60cb, type: 2}
 --- !u!70 &1101749453119163316
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -15,6 +15,10 @@ namespace GamePlay.Installers
 
         public override void InstallBindings()
         {
+            
+            Container.Bind<IGamePlayUiManager>().To<GamePlayUiManager>().FromMethod(FindUiManager).AsSingle();
+
+            
             Container.Bind<IPlayerCharacterController>().To<PlayerCharacterController>()
                 .FromComponentInNewPrefab(_characterController)
                 .AsSingle();
@@ -31,7 +35,6 @@ namespace GamePlay.Installers
             Container.Bind<IEnvironmentInteractionConfiguration>().To<EnvironmentInteractionConfiguration>()
                 .FromScriptableObject(_environmentConfig).AsSingle();
             
-             Container.Bind<IGamePlayUiManager>().To<GamePlayUiManager>().FromMethod(FindUiManager).AsSingle();
             
         }
 

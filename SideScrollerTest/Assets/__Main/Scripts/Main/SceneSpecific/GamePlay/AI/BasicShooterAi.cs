@@ -26,7 +26,7 @@ public class BasicShooterAi : BaseAiStateMachine
 
     private void Patrol()
     {
-        CachedTransform.position += transform.forward * _speed * Time.deltaTime;
+        CachedTransform.position += CachedTransform.right * _speed * Time.deltaTime;
         bool wallDetected = DetectWall();
         bool paddleDetected = DetectPaddle();
         bool enemyDetected = DetectEnemy();
@@ -53,6 +53,7 @@ public class BasicShooterAi : BaseAiStateMachine
 
         if (_shootTimer >= _fireRate)
         {
+      
             _shootTimer = 0;
             var bullet = _bulletPool.Spawn();
             bullet.Shoot(_shootMuzzle.position, _shootMuzzle.right, 0, _actor);
@@ -87,6 +88,7 @@ public class BasicShooterAi : BaseAiStateMachine
     private void Start()
     {
         _damageable.Init(_initialHealth);
+        _damageable.OnDeath += delegate { gameObject.SetActive(false); };
         CurrentState = Patrol;
     }
 }

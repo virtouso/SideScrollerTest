@@ -1,38 +1,46 @@
+using System;
 using GamePlay.Elements;
 using GamePlay.Elements.Player;
 using GamePlay.Manager;
+using General.Configurations;
 using UnityEngine;
 using Zenject;
 
-public class CharacterControllerInstaller : MonoInstaller
+namespace GamePlay.Installers
 {
-    public override void InstallBindings()
+    public class CharacterControllerInstaller : MonoInstaller
     {
-        Container.Bind<PlayerCharacterControllerModel>().FromMethod(GetModel).AsSingle();
-        Container.Bind<PlayerCharacterControllerController>().FromNew().AsSingle();
+        [SerializeField] private BuildConfiguration _buildConfig;
 
-        Container.Bind<IInputMediator>().To<InputMediator>().FromNew().AsSingle();
-        Container.Bind<BaseInputReader>().To<WindowsInputReader>().FromNewComponentSibling().AsSingle();
-        Container.Bind<IActorGroup>().To<CampaignPlayerGroup>().FromComponentSibling().AsSingle();
-        Container.Bind<IDamageable>().To<Damageable>().FromComponentSibling().AsSingle();
-        Container.Bind<IInputValidator>().To<InputValidator>().FromNew().AsSingle();
-        // Container.Bind<IGamePlayUiManager>().To<GamePlayUiManager>().FromMethod(FindUiManager).AsSingle();
-        // Container.Bind<ISinglePlayerMissionsManager>().To<SinglePlayerMissionsManager>().FromMethod(FindMissionsManager)
-        //     .AsSingle();
-    }
+        public override void InstallBindings()
+        {
+            Container.Bind<PlayerCharacterControllerModel>().FromMethod(GetModel).AsSingle();
+            Container.Bind<PlayerCharacterControllerController>().FromNew().AsSingle();
 
-    // private GamePlayUiManager FindUiManager()
-    // {
-    //     return GameObject.FindObjectOfType<GamePlayUiManager>();
-    // }
+            Container.Bind<IInputMediator>().To<InputMediator>().FromNew().AsSingle();
 
-    // private SinglePlayerMissionsManager FindMissionsManager()
-    // {
-    //     return GameObject.FindObjectOfType<SinglePlayerMissionsManager>();
-    // }
-    //
-    private PlayerCharacterControllerModel GetModel()
-    {
-        return GetComponent<PlayerCharacterController>().Model;
+
+            if (_buildConfig.SelectedController == BuildController.Keyboard)
+                Container.Bind<BaseInputReader>().To<WindowsInputReader>().FromNewComponentSibling().AsSingle();
+            else
+                Container.Bind<BaseInputReader>().To<PlayStationInputReader>().FromNewComponentSibling().AsSingle();
+
+
+            Container.Bind<IActorGroup>().To<CampaignPlayerGroup>().FromComponentSibling().AsSingle();
+            Container.Bind<IDamageable>().To<Damageable>().FromComponentSibling().AsSingle();
+            Container.Bind<IInputValidator>().To<InputValidator>().FromNew().AsSingle();
+             Container.Bind<IGamePlayUiManager>().To<GamePlayUiManager>().FromMethod(FindUiManager).AsSingle();
+         
+        }
+        private GamePlayUiManager FindUiManager()
+        {
+            return GameObject.FindObjectOfType<GamePlayUiManager>();
+        }
+
+   
+        private PlayerCharacterControllerModel GetModel()
+        {
+            return GetComponent<PlayerCharacterController>().Model;
+        }
     }
 }

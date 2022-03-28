@@ -17,7 +17,7 @@ namespace GamePlay.Manager
 
         void ShowLevelStartMessage(string message);
         void ShowLevelSuccessMessage(string message);
-        void ShowLevelFailMessage(bool showPause,string message, UnityAction firstAction, UnityAction secondAction);
+        void ShowLevelFailMessage(bool showPause, string message, UnityAction firstAction, UnityAction secondAction);
         void SetHealth(int value);
         void SetMaximumHealth(int value);
     };
@@ -28,6 +28,7 @@ namespace GamePlay.Manager
         [SerializeField] private TextMeshProUGUI _levelMessageText;
         [SerializeField] private PauseScreenModel _pauseScreen;
         [SerializeField] private Slider _healthSlider;
+
         public void ShowMissionFailMessage(string message)
         {
             _levelMessageText.text = message;
@@ -63,8 +64,10 @@ namespace GamePlay.Manager
             _levelMessageText.text = message;
         }
 
-        public void ShowLevelFailMessage(bool showPause,string message, UnityAction firstAction, UnityAction secondAction)
+        public void ShowLevelFailMessage(bool showPause, string message, UnityAction firstAction,
+            UnityAction secondAction)
         {
+            GeneralReferences.Paused = showPause;
             _levelMessageText.text = message;
             _pauseScreen.GameObject.SetActive(showPause);
             _pauseScreen.FirstButton.onClick.RemoveAllListeners();
@@ -85,7 +88,7 @@ namespace GamePlay.Manager
             _healthSlider.value = value;
         }
 
-
+        [System.Serializable]
         private class PauseScreenModel
         {
             public GameObject GameObject;

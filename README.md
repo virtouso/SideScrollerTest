@@ -5,6 +5,8 @@
 * some feature look overengineering for simple project but needed to show to i design a flexible and testable system.
 * Input       Arrows: Horizontal Move                Right-Shift: Shooting       Space: Jump
 
+* a video link for fast review : https://youtu.be/Ne_jwTPxwpY
+
 ## Important Features
 
 * used MVC to seperate logic from monobehaviours. its makes logix easier to test without play mode testing. 
@@ -33,8 +35,8 @@ on mission done they raise event on "MissionsList" and after that its descides w
 
 
 ## Things Could Be Better
-
+* Could Not Apply MVC on all classes because of no time. 
 * Wanted to add graphics but didnt have enough time
 * for some parts it was better to use better architecture or add "Signal Bus" architecture for indirect dependency and more flexiblity.
 * moving some "serializefield" properties that are configuation and dont change to "ScriptableObject For Cleaner Structure"
-
+* working with platform to make player character have same velocity with panel to avoid shaking on panel.
